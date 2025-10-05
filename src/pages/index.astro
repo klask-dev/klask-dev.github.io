@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="klask.dev - Open Source Code Search Engine">
+  <header>
+    <h1>
+      <img src="https://raw.githubusercontent.com/klask-dev/klask-dev/master/src/main/webapp/content/images/logo-klask.png" alt="klask.dev" style="max-width: 200px; margin-bottom: 1rem;" />
+    </h1>
+    <p>Open Source Search Engine for Source Code</p>
+  </header>
+
+  <main>
+    <h2>What is klask.dev?</h2>
+    <p>
+      <strong><a href="https://github.com/klask-dev/klask-dev">klask.dev</a></strong> is an open source search engine for source code.
+      It can be installed on a local server to index your git repositories, and serve a GUI for developers.
+    </p>
+
+    <h3>Live demo</h3>
+    <p>
+      <a href="http://app.klask.dev">app.klask.dev</a>
+    </p>
+
+    <h3>How to run it with docker?</h3>
+    <p>You can run an instance easily by pulling the docker image and execute by following:</p>
+
+    <pre><code>docker run klask/klask.dev</code></pre>
+
+    <h4>docker-compose</h4>
+    <p>An example of a docker-compose.yml:</p>
+    <pre><code>version: '2'
+services:
+  klask-app:
+    image: klask/klask.dev:latest
+    ports:
+      - 8080:8080
+    volumes:
+      - /mnt/svn:/repo
+      - ./data:/klask-data
+      - ./application-docker.yml:/application-docker.yml</code></pre>
+
+    <p>
+      <code>/mnt/svn</code> is the path to my repositories<br />
+      <code>./data</code> is the location where elasticsearch files and database were saved.<br />
+      The optional file <code>application-docker.yml</code> can overrides all properties defined in
+      <a href="/src/main/resources/config/application.yml">application.yml</a> and
+      <a href="/src/main/resources/config/application-docker.yml">application-docker.yml</a>
+    </p>
+  </main>
+</Layout>

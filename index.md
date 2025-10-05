@@ -5,7 +5,7 @@ title: klask.dev
 # [![klask.dev](https://raw.githubusercontent.com/klask-dev/klask-dev/master/src/main/webapp/content/images/logo-klask.png)](https://github.com/klask-dev/klask-dev)
 
 ## What is klask.dev ?
-__[klask.dev](https://github.com/klask-dev/klask-dev)__ is an open source search engine for source code. This application was generated using [JHipster](https://jhipster.github.io). It can be installed on a local server to index your VCS, and serve a GUI for developers.
+__[klask.dev](https://github.com/klask-dev/klask-dev)__ is an open source search engine for source code. It can be installed on a local server to index your Git repositories, and serve a GUI for developers.
 
 ### Live demo
 [app.klask.dev](http://app.klask.dev)
