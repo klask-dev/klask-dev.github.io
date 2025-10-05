@@ -1,19 +1,19 @@
 ---
 layout: default
-title: klask.io
+title: klask.dev
 ---
-# [![klask.io](https://raw.githubusercontent.com/klask-io/klask-io/master/src/main/webapp/content/images/logo-klask.png)](https://github.com/klask-io/klask-io)
+# [![klask.dev](https://raw.githubusercontent.com/klask-dev/klask-dev/master/src/main/webapp/content/images/logo-klask.png)](https://github.com/klask-dev/klask-dev)
 
-## What is klask.io ?
-__[klask.io](https://github.com/klask-io/klask-io)__ is an open source search engine for source code. This application was generated using [JHipster](https://jhipster.github.io). It can be installed on a local server to index your VCS, and serve a GUI for developers.
+## What is klask.dev ?
+__[klask.dev](https://github.com/klask-dev/klask-dev)__ is an open source search engine for source code. This application was generated using [JHipster](https://jhipster.github.io). It can be installed on a local server to index your VCS, and serve a GUI for developers.
 
 ### Live demo
-[app.klask.io](http://app.klask.io)
+[app.klask.dev](http://app.klask.dev)
 
 ### How to run it with docker ?
 You can run an instance easily by pulling the docker image and execute by following :
 
-    docker run klask/klask.io
+    docker run klask/klask.dev
 
 #### docker-compose
 an example of a docker-compose.yml :
@@ -22,7 +22,7 @@ an example of a docker-compose.yml :
 version: '2'
 services:
   klask-app:
-    image: klask/klask.io:latest
+    image: klask/klask.dev:latest
     ports:
       - 8080:8080
     volumes:

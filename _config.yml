@@ -1,17 +1,17 @@
-title: klask.io
+title: klask.dev
 show_downloads: false
 theme: jekyll-theme-cayman
-url: "http://klask.io"
+url: "http://klask.dev"
 lsi: true
 safe: false
-source: ['https://github.com/klask-io/klask-io']
+source: ['https://github.com/klask-dev/klask-dev']
 incremental: false
 highlighter: rouge
 
 # About/contact
 author:
-  name:       Jérémie H.
-  url:        http://klask.io
+  name:       Jérémie
+  url:        http://klask.dev
 
 # Google services
 google_analytics: UA-92691122-2
