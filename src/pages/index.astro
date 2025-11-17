@@ -48,7 +48,20 @@ docker-compose up -d</code></pre>
     <p>Deploy Klask on Kubernetes using Helm:</p>
     <pre><code>helm repo add klask https://charts.klask.dev
 helm repo update
-helm install klask klask/klask -f my-values.yaml</code></pre>
+helm install klask klask/klask -f values.yaml</code></pre>
+    <p>
+      Basic <code>values.yaml</code> example:
+    </p>
+    <pre><code>ingress:
+  enabled: true
+  hosts:
+    - host: klask.yourdomain.com
+postgresql:
+  auth:
+    password: changeme</code></pre>
+    <p>
+      <a href="/helm">→ Full Helm deployment guide</a>
+    </p>
 
     <h3>Technology Stack</h3>
     <p>

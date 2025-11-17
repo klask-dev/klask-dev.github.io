@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Klask - Helm Deployment Guide">
+  <header>
+    <h1>Helm Deployment Guide</h1>
+    <p><a href="/">← Back to home</a></p>
+  </header>
+
+  <main>
+    <h2>Installation</h2>
+    <pre><code>helm repo add klask https://charts.klask.dev
+helm repo update
+helm install klask klask/klask -f values.yaml</code></pre>
+
+    <h2>Basic Configuration (values.yaml)</h2>
+    <p>Here's a minimal configuration to get started:</p>
+
+    <pre><code># Backend configuration
+backend:
+  replicaCount: 2
+  image:
+    repository: klask/backend
+    tag: latest
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+# Frontend configuration
+frontend:
+  replicaCount: 2
+  image:
+    repository: klask/frontend
+    tag: latest
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+
+# PostgreSQL database
+postgresql:
+  enabled: true
+  auth:
+    username: klask
+    password: changeme
+    database: klask
+
+# Ingress configuration
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: klask.yourdomain.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: klask-tls
+      hosts:
+        - klask.yourdomain.com</code></pre>
+
+    <h2>Key Configuration Parameters</h2>
+
+    <h3>Backend</h3>
+    <ul>
+      <li><code>backend.replicaCount</code> - Number of backend pods (default: 2)</li>
+      <li><code>backend.resources</code> - CPU and memory limits</li>
+      <li><code>backend.env</code> - Environment variables (database URL, JWT secret, etc.)</li>
+    </ul>
+
+    <h3>Frontend</h3>
+    <ul>
+      <li><code>frontend.replicaCount</code> - Number of frontend pods (default: 2)</li>
+      <li><code>frontend.env.VITE_API_URL</code> - Backend API endpoint</li>
+    </ul>
+
+    <h3>Database</h3>
+    <ul>
+      <li><code>postgresql.enabled</code> - Deploy PostgreSQL instance (default: true)</li>
+      <li><code>postgresql.auth.*</code> - Database credentials</li>
+      <li><code>postgresql.persistence.size</code> - Storage size (default: 8Gi)</li>
+    </ul>
+
+    <h3>Ingress</h3>
+    <ul>
+      <li><code>ingress.enabled</code> - Enable external access (default: false)</li>
+      <li><code>ingress.className</code> - Ingress controller (nginx, traefik, etc.)</li>
+      <li><code>ingress.hosts</code> - Domain configuration</li>
+      <li><code>ingress.tls</code> - TLS/SSL certificate configuration</li>
+    </ul>
+
+    <h2>Production Recommendations</h2>
+    <ul>
+      <li>Use external PostgreSQL for better reliability</li>
+      <li>Configure persistent volumes for data storage</li>
+      <li>Set up proper resource limits based on your repository size</li>
+      <li>Enable TLS with valid certificates</li>
+      <li>Configure JWT secret via Kubernetes secrets</li>
+      <li>Set up monitoring and logging</li>
+    </ul>
+
+    <h2>Advanced Configuration</h2>
+    <p>For production deployments, consider:</p>
+    <pre><code># Use external PostgreSQL
+postgresql:
+  enabled: false
+
+# External database connection
+backend:
+  env:
+    DATABASE_URL: postgresql://user:pass@postgres.example.com/klask
+    JWT_SECRET: your-secret-key-here
+
+# Autoscaling
+backend:
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 70</code></pre>
+
+    <h2>More Resources</h2>
+    <ul>
+      <li><a href="https://github.com/klask-dev/klask-dev/tree/master/charts/klask" target="_blank">Full Chart Documentation</a></li>
+      <li><a href="https://github.com/klask-dev/klask-dev/blob/master/HELM_DEPLOYMENT_GUIDE.md" target="_blank">Deployment Guide</a></li>
+      <li><a href="https://github.com/klask-dev/klask-dev/blob/master/HELM_SAFETY_IMPROVEMENTS.md" target="_blank">Security Best Practices</a></li>
+      <li><a href="https://github.com/klask-dev/klask-dev" target="_blank">GitHub Repository</a></li>
+    </ul>
+
+    <hr style="margin: 2rem 0;" />
+    <p style="text-align: center;">
+      <a href="/">← Back to home</a>
+    </p>
+  </main>
+</Layout>
