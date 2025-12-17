@@ -16,7 +16,7 @@
 
 ## Live Demo
 
-http://app.klask.dev/
+http://app.klask.dev/  (coming soon 🚀)
 
 ## Quick Start
 
@@ -49,6 +49,4 @@ helm install klask klask/klask -f my-values.yaml
 
 ## License
 
-Apache License 2.0   
-
-
+Apache License 2.0
